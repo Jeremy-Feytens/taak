@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.util.List" %>
+<%@ page import="domain.model.Product" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,26 +21,25 @@
 <main>
     <h2>Boodschappenlijst</h2>
     <table>
-        <tr>
-            <th>Product</th>
-            <th>Prijs</th>
-            <th>Hoeveelheid</th>
-        </tr>
-        <tr>
-            <td>Cola</td>
-            <td>1.50€</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>Kaas</td>
-            <td>2€</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>Hesp</td>
-            <td>3€</td>
-            <td>1</td>
-        </tr>
+            <thead>
+            <tr>
+                <th>Naam</th>
+                <th>Prijs</th>
+                <th>Hoeveelheid</th>
+                <th>Verwijder</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%  List<Product> lijst = (List<Product>) request.getAttribute("lijst");
+                for(Product i : lijst){ %>
+            <tr>
+                <td><%=i.getNaam()%></td>
+                <td><%=i.getPrijs()%></td>
+                <td><%=i.getHoeveelheid()%></td>
+                <td>Verwijder</td>
+            </tr>
+            <% } %>
+            </tbody>
 
     </table>
 </main>
